@@ -54,14 +54,18 @@ function App() {
             <Header
                 categories={newsData?.categories}
                 setSelectedCategory={setCategoryId}
-                selectedCategory={categoryId}/>
+                selectedCategory={categoryId}
+            />
             <Main
                 selectedCategory={categoryId}
                 newsArray={newsData.items}
                 sourcesArray={newsData.sources}
                 nameCategory={nameActiveCategory}/>
-            <Footer/>
+            <Footer categories={newsData?.categories}
+                    setSelectedCategory={setCategoryId}
+                    selectedCategory={categoryId}/>
         </>
+
 
     ) : (<h1>Ошибка</h1>);
 }

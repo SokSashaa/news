@@ -3,7 +3,7 @@ import {categoriesEnum, sourcesType} from "../App";
 
 import './Header.css'
 
-type HeaderProps = {
+export type HeaderProps = {
     categories: sourcesType[];
     setSelectedCategory: React.Dispatch<React.SetStateAction<categoriesEnum>>;
     selectedCategory: categoriesEnum
@@ -12,7 +12,7 @@ const Header: FC<HeaderProps> = ({categories, setSelectedCategory, selectedCateg
     return (
         <header className="header">
             <div className="container">
-                <nav className="navigation grid header__navigation">
+                <nav className={'navigation grid header__navigation'}>
                     <p className="navigation__logo" onClick={() => setSelectedCategory(categoriesEnum.index)}>
                         <img className="navigation__image" src="logo.svg" alt="Логотип"/>
                     </p>

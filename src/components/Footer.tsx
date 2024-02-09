@@ -1,26 +1,35 @@
-import React from "react";
+import React, {FC} from "react";
 import "./Footer.css"
+import {categoriesEnum, sourcesType} from "../App";
 
-function Footer(){
-    return <footer className="footer">
+import {HeaderProps} from "./Header";
+
+const Footer: FC<HeaderProps> = ({categories, setSelectedCategory, selectedCategory}) => {
+    return (<footer className="footer">
         <div className="container">
             <nav className="navigation grid footer__navigation">
-                <a href="#" className="navigation__logo"><img className="navigation__image" src="logo.svg" alt="Логотип"/></a>
+                <p className="navigation__logo" onClick={() => setSelectedCategory(categoriesEnum.index)}>
+                    <img className="navigation__image" src="logo.svg" alt="Логотип"/>
+                </p>
                 <ul className="navigation__list">
-                    <li className="navigation__item"><a href="#" className="navigation__link navigation__link--active">Главная</a></li>
-                    <li className="navigation__item"><a href="#" className="navigation__link">Мода</a></li>
-                    <li className="navigation__item"><a href="#" className="navigation__link">Технологии</a></li>
-                    <li className="navigation__item"><a href="#" className="navigation__link">Музыка</a></li>
-                    <li className="navigation__item"><a href="#" className="navigation__link">Karpov</a></li>
+                    {categories.map(item =>
+                        <li className="navigation__item" key={item.id}>
+                            <p className={`navigation__link ${item.id === selectedCategory ? "navigation__link--active" : ''}`}
+                               onClick={() => setSelectedCategory(item.id)}>
+                                {item.name}
+                            </p>
+                        </li>)}
                 </ul>
             </nav>
 
             <div className="footer__column">
-                <p className="footer__text">Сделано мною в <a href="#" target="_blank" className="footer__link">моей комнате</a></p>
+                <p className="footer__text">Сделано мною в <a href="#" target="_blank" className="footer__link">моей
+                    комнате</a></p>
                 <p className="footer__copyright">© 2021</p>
             </div>
         </div>
-    </footer>
+    </footer>)
 }
+
 
 export default Footer
